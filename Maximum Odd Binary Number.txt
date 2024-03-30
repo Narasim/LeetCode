@@ -1,0 +1,21 @@
+class Solution(object):
+    def maximumOddBinaryNumber(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        count = [0,0]
+        for i in range(len(s)):
+            count[int(s[i])] += 1
+        str = ''
+        if(count[1] == 0 or count[0] == 0):
+            return s
+        else:
+            while(count[1]>1):
+                str += '1'
+                count[1] -= 1
+            while(count[0]>0):
+                str += '0'
+                count[0] -= 1
+            str += '1'
+        return str
