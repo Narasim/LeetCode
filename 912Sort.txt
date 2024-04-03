@@ -1,0 +1,38 @@
+class Solution(object):
+    def sortArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        if len(set(nums)) == 1: 
+            return nums 
+        random.shuffle(nums)
+        l = 0
+        h = len(nums)
+        self.DC(nums, l, h-1)
+        return nums
+    
+    def DC(self, nums, l, h):
+        if l < h:
+            j = self.partition(nums, l, h)
+            self.DC(nums, l, j)
+            self.DC(nums, j+1, h)
+
+    def partition(self, nums, low, high):
+        pivot = nums[low]
+        i = low
+        low += 1
+        while low <= high:
+            while low <= high and pivot > nums[low]:
+                low += 1 
+            while low <= high and pivot <= nums[high]:
+                high -= 1
+            if low < high:
+                temp = nums[low]
+                nums[low] = nums[high]
+                nums[high] = temp
+        if low > high:
+            temp = nums[high]
+            nums[high] = nums[i]
+            nums[i] = temp
+        return high
