@@ -1,0 +1,28 @@
+class Solution(object):
+    def getHint(self, secret, guess):
+        """
+        :type secret: str
+        :type guess: str
+        :rtype: str
+        """
+        rightPos = []
+        shuffCount = 0
+        posHash = Counter(secret)
+        for i in range(len(secret)):
+            if(secret[i]==guess[i]):
+                posHash[guess[i]] -= 1
+                rightPos.append(i)
+        secretList = list(secret)
+        guessList = list(guess)
+        for i in rightPos:
+            secretList[i] = ''
+            guessList[i] = ''
+        secret = ''.join(secretList)
+        guess = ''.join(guessList)
+        for i in range(len(secret)):
+            if(guess[i] in secret):
+                if(guess[i] in posHash):
+                    if(posHash[guess[i]] > 0):
+                        shuffCount += 1
+                        posHash[guess[i]] -= 1
+        return str(len(rightPos)) + 'A' + str(shuffCount) + 'B'
