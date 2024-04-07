@@ -1,0 +1,27 @@
+class Solution(object):
+    def longestMonotonicSubarray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        max = 1
+        for i in range(len(nums)):
+            pCount = 1
+            nCount = 1
+            print(i)
+            for j in range(i, len(nums)-1):
+                if(nums[j] > nums[j+1]):
+                    pCount += 1
+                else:
+                    break
+            for j in range(i, len(nums)-1):
+                if(nums[j] < nums[j+1]):
+                    nCount += 1
+                else:
+                    break
+            if(pCount > nCount):
+                if(pCount > max):
+                    max = pCount
+            elif(nCount > max):
+                max = nCount
+        return max
