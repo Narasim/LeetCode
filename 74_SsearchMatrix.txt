@@ -1,0 +1,19 @@
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        m =  len(matrix)
+        n = len(matrix[0])
+        i = 0
+        while(i<m):
+            if(matrix[i][n-1] >= target):
+                j = 0
+                while(j<n):
+                    if(matrix[i][j] == target):
+                        return True
+                    j += 1
+            i += 1
+        return False

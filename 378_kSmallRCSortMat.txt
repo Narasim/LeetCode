@@ -1,0 +1,13 @@
+class Solution(object):
+    def kthSmallest(self, matrix, k):
+        """
+        :type matrix: List[List[int]]
+        :type k: int
+        :rtype: int
+        """
+        flatMatrix = []
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                flatMatrix.append(matrix[i][j])
+        flatMatrix.sort()
+        return flatMatrix[k-1]
