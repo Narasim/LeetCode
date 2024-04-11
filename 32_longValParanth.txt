@@ -1,0 +1,24 @@
+class Solution(object):
+    def longestValidParentheses(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        maxValid = 0
+        stack = 0
+        count = 0
+        checkPoint = 0
+        for i in s:
+            if i == '(':
+                stack += 1
+            elif i == ')' and stack != 0:
+                stack -= 1
+                if(stack > 0):
+                    count += 1
+                elif(stack == 0):
+                    count += 1
+                    checkPoint = count
+        if(stack > 0):
+            return checkPoint*2
+        else: 
+            return count*2
