@@ -36,3 +36,13 @@ class Solution(object):
             return flag
         elif(found == 0):
             return 1
+            
+            
+            
+# Best Solution
+# for element beginning from 1, if it is present in the set then continue else return key
+hs = set(nums)
+min_key = 1
+while min_key in hs:
+      min_key += 1 
+return min_key
