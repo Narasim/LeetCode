@@ -1,0 +1,22 @@
+from collections import Counter
+class Solution(object):
+    def relativeSortArray(self, arr1, arr2):
+        """
+        :type arr1: List[int]
+        :type arr2: List[int]
+        :rtype: List[int]
+        """
+        res = []
+        countObj = Counter(arr1)
+        for i in arr2:
+            for j in range(countObj[i]):
+                res.append(i)
+        temp = []
+        for i in arr1:
+            if(i not in arr2):
+                temp.append(i)
+        temp.sort()
+        res.extend(temp)
+        
+
+        return res
