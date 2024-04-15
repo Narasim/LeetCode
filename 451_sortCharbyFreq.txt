@@ -1,0 +1,18 @@
+from collections import Counter
+class Solution(object):
+    def frequencySort(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        s = str(s)
+        freq = Counter(s)
+        strKeys = list(freq.keys())
+        strValues = list(freq.values())
+        finalList = []
+        while(len(strKeys)>0):
+            maxIndex = strValues.index(max(strValues))
+            finalList.append(strKeys[maxIndex]*strValues[maxIndex])
+            strKeys.pop(maxIndex)
+            strValues.pop(maxIndex)
+        return ''.join(finalList)

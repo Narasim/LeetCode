@@ -1,0 +1,23 @@
+class Solution(object):
+    def sortPeople(self, names, heights):
+        """
+        :type names: List[str]
+        :type heights: List[int]
+        :rtype: List[str]
+        """
+        indices = []
+        for i in range(len(heights)):
+            indices.append(i)
+        for i in range(len(heights)-1):
+            for j in range(len(heights)-1):
+                if(heights[j] < heights[j+1]):
+                    temp = heights[j]
+                    heights[j] = heights[j+1]
+                    heights[j+1] = temp
+                    temp = indices[j]
+                    indices[j] = indices[j+1]
+                    indices[j+1] = temp
+        result_list = [names[index] for index in indices]
+        return result_list
+                
+
